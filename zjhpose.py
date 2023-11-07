@@ -87,9 +87,10 @@ df_combined = pd.concat([df_combined, df_person], ignore_index=True)
 df_combined.index = range(25)
 
 # 将DataFrame保存为xlsx文件
-output_file = 'output1.xlsx'
+output_file = 'output2.xlsx'
 df_combined.to_excel(output_file, index=True)
 print(f"DataFrame已保存为{output_file}文件。")
+# openpose(i,j): output:矩阵
 
 # 遍历所有JSON文件并整合数据
 # for frame_num, json_file in enumerate(json_files):

@@ -5,6 +5,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.cluster import KMeans
+
+# from DTP import DTP
+
+
 def read_json_file(i, folder="output_jsons"):
     # 使用字符串格式化来生成文件名
     filename = f"{folder}/video_{i:012d}_keypoints.json"
@@ -12,6 +16,8 @@ def read_json_file(i, folder="output_jsons"):
     with open(filename, 'r') as file:
         data = json.load(file)
     return data
+
+# DTP()
 # 输入帧数和第几个人
 i = int(input("请输入帧数："))
 j = int(input("请输入第几个人：（从0开始）"))
@@ -35,6 +41,8 @@ keypoints = pose_keypoints_2d[:75]  # 只保留前75个值
 # 将关键点数据重塑为25行3列的矩阵
 keypoints_matrix = np.reshape(keypoints, (25, 3))
 print(keypoints_matrix)
+
+
 # 提取置信度
 confidences = [kp[2] for kp in keypoints_matrix if kp[2] != 0]
 
@@ -54,10 +62,16 @@ centers = kmeans.cluster_centers_
 # 绘制聚类中心
 for center in centers:
     plt.axvline(x=center[0], color='red', linestyle='--', label=f'Cluster Center {center[0]:.3f}')
-
+x=[]
+y=[]
+c=[]
 # 显示图形
 # plt.title("KMeans Clustering of Confidence Values")
 plt.xlabel("Confidence Value")
 plt.ylabel("Frequency")
 plt.legend()
 plt.show()
+dtp=[1,2,3]
+dtp.append(4)
+print(dtp)
+# dtp.app(DTP(矩阵,阈值))
